@@ -1,8 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
 
 nav {
+    margin: 0;
+    padding: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -112,8 +129,8 @@ header {
 
 /* Container delle cards disposte in griglia 3x2 */
 .trending-item {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     padding: 0;
     margin: 0 0 40px 0;
@@ -121,12 +138,24 @@ header {
 }
 
 /* Stile base della singola card */
-/* calc serve per calcolare il margine tra le cards */
 .card {
-    flex: 0 0 calc(33.333% - 22px);
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 0;
+}
+
+/* Numero a sinistra della card */
+.number {
+    position: absolute;
+    left: 0;
+    top: -6px;
+    font-size: 32px;
+    color: #E6E6E6;
+    font-weight: 500;
 }
 
 /* Header della card con avatar e nome autore */
@@ -134,16 +163,7 @@ header {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 0;
-}
-
-.card-header h3 {
-    font-size: 13px;
-    color: #242424;
-}
-
-.card-header span {
-    color: #0000004d;
+    margin-bottom: 8px;
 }
 
 .card-header img {
@@ -152,40 +172,24 @@ header {
     border-radius: 50%;
 }
 
-/* Corpo della card con titolo limitato a 2 righe */
-.card-body h2 {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.25;
+.card-header h3 {
+    font-size: 13px;
     color: #242424;
 }
 
-/* Footer della card con data e tempo di lettura */
-.card-footer {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    color: #6B6B6B;
+/* Corpo della card con titolo */
+.card-body h2 {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #242424;
+    margin-bottom: 8px;
 }
 
+/* Footer della card */
 .card-footer p {
     font-size: 13px;
     color: #6B6B6B;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.card-footer span {
-    color: #0000004d;
-    display: flex;
-    align-items: center;
-}
-
-.card-footer span img {
-    width: 15px;
-    height: 15px;
-    vertical-align: middle;
 }
 
 #popular {
@@ -310,4 +314,470 @@ header {
     text-decoration: none;
     color: #757575;
     font-size: 13px;
+}
+
+
+
+
+
+
+/* media query per la responsive design */
+
+/* per tablet */
+@media (max-width: 768px) {
+    /* Reset margini generali */
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* Nav completamente aderente ai bordi */
+    nav {
+        margin: 0;
+        padding: 16px 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .logo {
+        margin-left: 24px;
+    }
+
+    .nav-links {
+        margin-right: 24px;
+    }
+
+    /* Header completamente aderente ai bordi */
+    header {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .header-content {
+        margin: 0;
+        padding: 24px;
+        width: 45%;
+        max-width: 45%;
+    }
+
+    .artwork {
+        margin: 0;
+        width: 55%;
+    }
+
+    /* Sezione trending */
+    #trending {
+        padding: 24px;
+        width: 100%;
+    }
+
+    #topics-content {
+        padding: 24px;
+        width: 100%;
+    }
+
+    #popular {
+        padding: 24px;
+        width: 100%;
+    }
+
+    #main-footer {
+        padding: 24px;
+        width: 100%;
+    }
+
+    .nav-links {
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Header per tablet */
+    header {
+        padding: 24px;
+        margin: 0;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-content {
+        margin: 0;
+        width: 45%;
+    }
+
+    .header-content h1 {
+        font-size: 70px;
+        line-height: 1.2;
+    }
+
+    .header-content p {
+        font-size: 18px;
+    }
+
+    #getS {
+        width: 200px;
+    }
+
+    .artwork {
+        margin: 0;
+        width: 55%;
+        max-height: none;
+        overflow: visible;
+        transform: scale(1.1);
+    }
+
+    /*trending per tablet*/
+    /*repeat(2, 1fr) per gestire il layout a due colonneq*/
+    .trending-item {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        padding: 0 24px;
+    }
+
+    #trending {
+        padding: 0 24px;
+    }
+
+    /*numero a sinistra della card*/
+    #trending .number {
+        margin-right: 40px;
+    }
+
+    /* Riposiziona topics-content */
+    #topics {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    #popular {
+        order: 2;
+        padding: 24px;
+        width: 100%;
+    }
+
+    #topics footer {
+        order: 3;
+        padding: 24px;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    /* Sistema il layout delle cards in popular */
+    #popular .card {
+        margin-left: 0;
+        width: 100%;
+        padding: 0;
+        margin-bottom: 32px;
+    }
+
+    #topics-list {
+        max-width: 100%;
+        margin-bottom: 24px;
+    }
+
+    /* Aggiusta dimensioni per il nuovo layout */
+    .card {
+        padding-left: 45px; /* Aumentato da 28px */
+        position: relative;
+    }
+
+    .number {
+        position: absolute;
+        left: 0;
+        top: -4px;
+        font-size: 30px; /* Aumentato leggermente */
+        color: #E6E6E6;
+        font-weight: 500;
+    }
+
+    /* Rendi il topics-content full width */
+    #topics-content {
+        margin-left: 30px;
+        order: 1;
+        padding: 24px;
+        max-width: 100%;
+        border-bottom: 1px solid #E6E6E6;
+    }
+
+    #topics-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    #topics-list a {
+        padding: 8px 14px;
+        background-color: #f2f2f2;
+        text-decoration: none;
+        color: #757575;
+        font-size: 13px;
+        border-radius: 3px;
+        line-height: 1.2;
+    }
+
+    /* Titolo della sezione */
+    #topics-content h3 {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #000;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Posizionamento degli ultimi 3 elementi */
+    #topics-list a:nth-child(n+6) {
+        grid-column: auto; /* Rimuove il posizionamento specifico */
+    }
+
+    /* Forza la seconda riga a iniziare da sinistra */
+    #topics-list a:nth-child(6),
+    #topics-list a:nth-child(7),
+    #topics-list a:nth-child(8) {
+        grid-row: 2;
+    }
+
+    #popular-posts {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #topics-content {
+        order: 1;
+        padding: 24px;
+        width: 100%;
+        border-bottom: 1px solid #E6E6E6;
+    }
+
+    #popular {
+        order: 2;
+        padding: 24px;
+        width: 100%;
+    }
+
+    #main-footer {
+        order: 3;
+        padding: 24px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #main-footer a {
+        text-decoration: none;
+        color: #757575;
+        font-size: 13px;
+    }
+
+    /* Rimuovi qualsiasi limite di larghezza dal container principale */
+    .container {
+        width: 100vw;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    /* Forza nav a estendersi per tutta la larghezza */
+    nav {
+        width: 100vw;
+        margin: 0;
+        padding: 16px 24px;
+        left: 0;
+        right: 0;
+    }
+
+    /* Forza header a estendersi per tutta la larghezza */
+    header {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        right: 0;
+    }
+
+    /* Rimuovi margini laterali dal contenuto principale */
+    #popular-posts {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Rimuovi tutti i margini laterali */
+    .logo {
+        margin-left: 24px;
+    }
+
+    .nav-links {
+        margin-right: 24px;
+    }
+
+    /* Forza il contenuto a estendersi completamente */
+    #popular-posts,
+    #trending,
+    #topics-content {
+        width: 100%;
+        margin: 0;
+        padding: 24px;
+    }
+
+    #main-footer {
+        width: 100%;
+        margin: 0;
+        padding: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    /* Reset generale più aggressivo */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    @media (max-width: 768px) {
+        /* Rimuovi tutti i margini e padding dal container */
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Nav full width */
+        nav {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 16px 24px;
+            position: relative;
+            left: 0;
+            right: 0;
+        }
+
+        /* Header full width */
+        header {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            left: 0;
+            right: 0;
+        }
+
+        /* Rimuovi tutti i margini fissi */
+        .logo {
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .nav-links {
+            margin: 0;
+            padding-right: 24px;
+        }
+
+        /* Forza il contenuto a estendersi completamente */
+        #trending,
+        #popular-posts,
+        #topics-content,
+        #main-footer {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 24px;
+        }
+    }
+}
+
+/* per mobile */
+@media (max-width: 480px) {
+    .nav-links {
+        display: none;
+    }
+}
+
+
+/*per qualunque desktop*/
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #FFC017;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    list-style: none;
+}
+
+.cta-button {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+.hero-section {
+    padding: 4rem 2rem;
+    background-color: #FFC017;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.start-reading-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .main-nav ul {
+        gap: 1rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 3rem;
+    }
 }

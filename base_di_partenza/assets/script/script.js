@@ -55,3 +55,4 @@ setTimeout(() => {
     // Ripeti l'animazione ogni 2-4 secondi
     setInterval(animateRandomM, Math.random() * 2000 + 2000);
 }, Math.random() * 1000 + 500);
+
