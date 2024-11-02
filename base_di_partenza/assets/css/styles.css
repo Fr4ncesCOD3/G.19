@@ -13,6 +13,12 @@ nav {
     z-index: 100;
     text-align: center;
     border-bottom: 1px solid #000;
+    transition: background-color 0.3s ease;
+}
+
+/* Aggiungi classe per il cambio di sfondo allo scroll */
+nav.scrolled {
+    background-color: #fff;
 }
 
 .logo {
@@ -37,6 +43,12 @@ nav {
     color: #fff;
     padding: 15px 25px;
     border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+/*  cambiare il colore al passaggio del mouse */
+#get-started:hover {
+    background-color: #1a8917;
 }
 
 header {
