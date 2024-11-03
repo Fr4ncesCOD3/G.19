@@ -1,10 +1,14 @@
 //gestione scroll con effetto di colore
 window.addEventListener('scroll', function() {
     const nav = document.querySelector('nav');
+    const getStartedBtn = document.querySelector('.nav-links a:last-child');
+    
     if (window.scrollY > 0) {
         nav.classList.add('scrolled');
+        getStartedBtn.style.backgroundColor = '#1A8917';
     } else {
         nav.classList.remove('scrolled');
+        getStartedBtn.style.backgroundColor = '#000';
     }
 }); 
 
